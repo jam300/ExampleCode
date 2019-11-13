@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% block nodos %}
+
+    {% for nodo in all_nodos%}
+        <li><a href="{% url 'inicio:nodo_detail' nodo.id %}">{{nodo.Nombre}}</a></li>
+    {% endfor%}
+
+{% endblock %}
+
+{% block nick_name %}
+      <h1 style="font-size:300%;">{{El_Nodo.Nombre}}</h1>
+{% endblock%}
+
+{% block Variables %}
+         {% for var in list_atributo %}
+            <li><a href="/inicio/{{El_Nodo.id}}/{{var}}">{{var}}</a></li>
+         {% endfor%}
+{% endblock %}
+
+{% block nick_variable %}
+    <h1 style="font-size:300%;">Potencia Activa (Watts)</h1>
+{% endblock%}
+
+{% block Gauge %}
+    <input type="hidden"  id="Data" value="{{Gauge_Variable}}">
+{% endblock%}

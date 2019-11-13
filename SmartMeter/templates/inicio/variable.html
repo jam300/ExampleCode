@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+
+{% block variable %}
+    <h1 style="font-size:300%;">{{variables}}</h1>
+{% endblock%}
+
+
+{% block nick_name %}
+      <h1 style="font-size:300%;">{{El_Nodo.Nombre}}</h1>
+{% endblock%}
+
+{% block nodos %}
+    {% for nodo in all_nodos%}
+        <li><a href="{% url 'inicio:nodo_detail' nodo.id %}">{{nodo.Nombre}}</a></li>
+    {% endfor%}
+{% endblock %}
+
+{% block Variables %}
+         {% for var in list_atributo%}
+            <li><a href="/inicio/{{El_Nodo.id}}/{{var}}">{{var}}</a></li>
+        {% endfor%}
+{% endblock %}
+
+{% block nick_variable %}
+    {% if magnitud == "Voltaje" %}
+        <h1 style="font-size:300%;">Voltaje (V)</h1>
+    {% elif magnitud == "Corriente" %}
+        <h1 style="font-size:300%;">Corriente (A)</h1>
+    {% elif magnitud == "Watts" %}
+        <h1 style="font-size:300%;">Potencia Activa (kWatts)</h1>
+    {% elif magnitud == "VA" %}
+        <h1 style="font-size:300%;">Potencia Aparente (kVA)</h1>
+    {% elif magnitud == "VAR" %}
+        <h1 style="font-size:300%;">Potencia Reactiva (kVAR)</h1>
+    {% elif magnitud == "FP" %}
+        <h1 style="font-size:300%;">Factor de Potencia</h1>
+    {% endif %}
+{% endblock%}
+
+{% block Gauge %}
+    <input type="hidden"  id="Data" value="{{Gauge_Variable}}">
+{% endblock%}
+
+{% block Stock2 %}
+    {{ chartData|safe}}
+{% endblock%}

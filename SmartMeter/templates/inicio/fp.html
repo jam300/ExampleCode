@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+
+{% block variable %}
+    <h1 style="font-size:300%;">{{variables}}</h1>
+{% endblock%}
+
+
+{% block nick_name %}
+      <h1 style="font-size:300%;">{{El_Nodo.Nombre}}</h1>
+{% endblock%}
+
+{% block nodos %}
+
+    {% for nodo in all_nodos%}
+        <li><a href="/inicio/{{nodo.id}}">{{nodo.Nombre}}</a></li>
+    {% endfor%}
+
+{% endblock %}
+
+{% block Variables %}
+
+         {% for var in v %}
+            <li><a href="/inicio/{{El_Nodo.id}}/{{var}}">{{var}}</a></li>
+        {% endfor%}
+{% endblock %}
+
+{% block nick_variable %}
+    <h1 style="font-size:300%;">Factor de Potencia</h1>
+{% endblock%}
+
+
+{% block Gauge %}
+    <input type="hidden"  id="Data" value="{{fp}}">
+{% endblock%}
